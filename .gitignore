@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# we use devcontainer to handle configuration, this is created temporarily 
+# and there's no need to persist it 
+.vscode
