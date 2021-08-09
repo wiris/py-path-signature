@@ -1,0 +1,54 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.187.0/containers/python-3
+{
+	"name": "Python 3",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": "..",
+		"args": {
+			// Update 'VARIANT' to pick a Python version: 3, 3.6, 3.7, 3.8, 3.9
+			"VARIANT": "3.8",
+		}
+	},
+	// Set *default* container specific settings.json values on container create.
+	"settings": {
+		"python.languageServer": "Pylance",
+		"editor.formatOnSave": true,
+		"editor.rulers": [
+			100
+		],
+		"python.linting.enabled": true,
+		"python.linting.pylintEnabled": false,
+		"python.linting.mypyEnabled": true,
+		"python.formatting.provider": "black",
+		"python.formatting.blackArgs": [
+			"--line-length",
+			"100"
+		],
+		"[python]": {
+			"editor.codeActionsOnSave": {
+				"source.organizeImports": true
+			}
+		},
+		"[json]": {
+			"files.insertFinalNewline": true,
+			"files.trimFinalNewlines": true,
+		}
+	},
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"ms-python.python",
+		"ms-python.vscode-pylance",
+		"whinarn.python-auto-venv"
+	],
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "./scripts/configure_dev_env.sh",
+	// "runArgs": [
+	// 	"--env-file",
+	// 	"${localWorkspaceFolder}/.env"
+	// ],
+	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode"
+}
