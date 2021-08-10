@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "py-path-signature"
-version = "210809.3"
+version = "210810.4"
 description = ""
 authors = ["TBD <tbd@example.com>"]
 
