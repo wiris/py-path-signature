@@ -20,6 +20,9 @@
 		"python.linting.enabled": true,
 		"python.linting.pylintEnabled": false,
 		"python.linting.mypyEnabled": true,
+		"python.linting.mypyArgs": [
+			"--config-file=${localWorkspaceFolder}/mypy.ini"
+		],
 		"python.formatting.provider": "black",
 		"python.formatting.blackArgs": [
 			"--line-length",
