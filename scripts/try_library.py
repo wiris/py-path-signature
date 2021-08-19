@@ -9,7 +9,7 @@ strokes = [Stroke(**stroke) for stroke in sample_strokes]
 pse = PathSignatureExtractor(
     order=2, rendering_size=(128, -1), min_rendering_dimension=5, max_aspect_ratio=30, delta=5
 )
-img = pse.extract_signature(strokes=[])
+img = pse.extract_signature(strokes=strokes)
 
 # Each channel of the path signature image representation stores path signature features of a given
 # order. Value range is [-1, 1] for each channel.
