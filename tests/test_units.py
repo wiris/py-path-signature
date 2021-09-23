@@ -6,6 +6,8 @@ import pytest
 from py_path_signature.data_models.stroke import Stroke
 from py_path_signature.path_signature_extractor import PathSignatureExtractor
 
+from .conftest import TEST_DATA_INPUT_DIR, TEST_DATA_REFERENCE_DIR
+
 
 @pytest.mark.parametrize(
     "input_strokes, expected_bounding_box",
@@ -36,11 +38,11 @@ def test_bounding_box(input_strokes, expected_bounding_box):
 
 
 def list_test_cases():
-    test_cases_dir = "tests/data/strokes"
+
     return [
         os.path.splitext(case)[0]
-        for case in os.listdir(test_cases_dir)
-        if os.path.isfile(os.path.join(test_cases_dir, case))
+        for case in os.listdir(TEST_DATA_INPUT_DIR)
+        if os.path.isfile(os.path.join(TEST_DATA_INPUT_DIR, case))
     ]
 
 
@@ -49,10 +51,11 @@ def strokes_and_reference_signature(request):
 
     test_case = request.param
 
-    with open(f"tests/data/strokes/{test_case}.txt") as f:
+    with open(os.path.join(TEST_DATA_INPUT_DIR, f"{test_case}.json")) as f:
         strokes = json.load(f)
 
-    path_signature = np.load(f"tests/data/signatures/{test_case}.npy")
+    with open(os.path.join(TEST_DATA_REFERENCE_DIR, f"{test_case}.json")) as f:
+        path_signature = np.array(json.load(f))
 
     return (strokes, path_signature)
 
