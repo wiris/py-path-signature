@@ -7,7 +7,7 @@ authors = ["TBD <tbd@example.com>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 pydantic = "^1.8.2"
-numpy = "^1.21.1"
+numpy = "~1.19"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
