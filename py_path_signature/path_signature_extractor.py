@@ -109,8 +109,8 @@ class PathSignatureExtractor:
         if len(strokes) == 0:
             raise Exception("Empty list of strokes.")
 
-        x_values = [x for stroke in strokes for x in stroke.x]
-        y_values = [y for stroke in strokes for y in stroke.y]
+        x_values = [x for stroke in strokes for x in stroke.x_generator()]
+        y_values = [y for stroke in strokes for y in stroke.y_generator()]
 
         x_min = min(x_values)
         x_max = max(x_values)
@@ -140,7 +140,7 @@ class PathSignatureExtractor:
         pixels = []
         for stroke in strokes:
             out_stroke = []
-            for (x, y) in zip(stroke.x, stroke.y):
+            for (x, y) in zip(stroke.x_generator(), stroke.y_generator()):
                 x = (self.rendering_size[1] - 1) * (x - x_min) / w
                 y = (self.rendering_size[0] - 1) * (y - y_min) / h
 
